@@ -45,8 +45,21 @@ class Program
 {
     static void Main()
     {
-        decimal initialBalance = 1000.00m;
-        var account = new BankAccount(initialBalance);
+        BankAccount account = null;
+
+        try
+        {
+            // Set initial balance to a valid amount for demonstration
+            decimal initialBalance = 1000.00m;
+
+            // Create BankAccount object
+            account = new BankAccount(initialBalance);
+        }
+        catch (InvalidAmountException ex)
+        {
+            Console.WriteLine("Error: " + ex.Message);
+            return; // Exit the application if initialization fails
+        }
 
         bool running = true;
 
@@ -65,7 +78,7 @@ class Program
             {
                 case "1":
                     // Check Balance
-                    account.DisplayBalance();
+                    account?.DisplayBalance();
                     break;
 
                 case "2":
@@ -75,7 +88,7 @@ class Program
                     {
                         try
                         {
-                            account.Withdraw(amount);
+                            account?.Withdraw(amount);
                         }
                         catch (InvalidAmountException ex) when (ex.Message.Contains("zero"))
                         {
