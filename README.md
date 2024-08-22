@@ -116,7 +116,7 @@ class Program
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/yourusername/banking-application.git
+   git clone https://github.com/mahirbarot/banking-application.git
    ```
    
 2. **Navigate to the Project Directory:**
@@ -140,14 +140,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For questions or feedback, please contact:
 
-- **Email:** your.email@example.com
-- **GitHub:** [yourusername](https://github.com/yourusername)
+- **Email:** mahirbarot.connect@gmail.com
+- **GitHub:** [yourusername](https://github.com/mahirbarot)
 
 ---
-
-### **Notes on Images**
-
-- **Class Diagram Image:** Replace `images/class_diagram.png` with the actual path to the class diagram image. You can create this diagram using tools like Microsoft Visio, Lucidchart, or draw.io.
-- **Exception Flowchart Image:** Replace `images/exception_flowchart.png` with the path to a flowchart image illustrating the exception handling flow. Tools like Lucidchart or draw.io can be used to create this.
-
-Make sure to add these images to the `images` directory in your repository for them to render correctly in the README.
