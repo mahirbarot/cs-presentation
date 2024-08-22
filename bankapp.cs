@@ -34,39 +34,86 @@ public class BankAccount
         Balance -= amount;
         Console.WriteLine($"Withdrawal successful. New balance: {Balance:C}");
     }
+
+    public void DisplayBalance()
+    {
+        Console.WriteLine($"Current balance: {Balance:C}");
+    }
 }
 
 class Program
 {
     static void Main()
     {
-        var account = new BankAccount(1000.00m); // Initial balance of $1000
+        decimal initialBalance = 1000.00m;
+        var account = new BankAccount(initialBalance);
 
-        try
+        bool running = true;
+
+        while (running)
         {
-            // Attempt to withdraw $1500, which should fail
-            account.Withdraw(1500.00m);
-        }
-        catch (InvalidAmountException ex) when (ex.Message.Contains("zero"))
-        {
-            // Handle cases where the amount is zero or negative
-            Console.WriteLine("Error: " + ex.Message);
-        }
-        catch (InsufficientFundsException ex) when (ex.Message.Contains("Insufficient"))
-        {
-            // Handle insufficient funds specifically
-            Console.WriteLine("Error: " + ex.Message);
-        }
-        catch (Exception ex)
-        {
-            // Handle any other unexpected exceptions
-            Console.WriteLine("An unexpected error occurred.");
-            Console.WriteLine($"Details: {ex.Message}");
-        }
-        finally
-        {
-            // Final operations, e.g., logging
-            Console.WriteLine("Transaction processing completed.");
+            Console.Clear();
+            Console.WriteLine("Bank Account Menu");
+            Console.WriteLine("1. Check Balance");
+            Console.WriteLine("2. Withdraw Funds");
+            Console.WriteLine("3. Exit");
+            Console.Write("Please choose an option: ");
+
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    // Check Balance
+                    account.DisplayBalance();
+                    break;
+
+                case "2":
+                    // Withdraw Funds
+                    Console.Write("Enter the amount to withdraw: ");
+                    if (decimal.TryParse(Console.ReadLine(), out decimal amount))
+                    {
+                        try
+                        {
+                            account.Withdraw(amount);
+                        }
+                        catch (InvalidAmountException ex) when (ex.Message.Contains("zero"))
+                        {
+                            Console.WriteLine("Error: " + ex.Message);
+                        }
+                        catch (InsufficientFundsException ex) when (ex.Message.Contains("Insufficient"))
+                        {
+                            Console.WriteLine("Error: " + ex.Message);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("An unexpected error occurred.");
+                            Console.WriteLine($"Details: {ex.Message}");
+                        }
+                        finally
+                        {
+                            Console.WriteLine("Transaction processing completed.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid amount entered.");
+                    }
+                    break;
+
+                case "3":
+                    // Exit
+                    running = false;
+                    Console.WriteLine("Exiting the application. Have a great day!");
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid choice. Please select a valid option.");
+                    break;
+            }
+
+            Console.WriteLine("Press Enter to return to the menu...");
+            Console.ReadLine();
         }
     }
 }
