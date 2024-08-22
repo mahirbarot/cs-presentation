@@ -1,4 +1,4 @@
-Certainly! Here’s a README file for the banking application example, including explanations and placeholder sections for images.
+readme for the codebase
 
 ---
 
@@ -109,7 +109,7 @@ class Program
 
 ### **Exception Flowchart**
 
-![Exception Flowchart](images/exception_flowchart.png)
+![Exception Flowchart](https://basicsofwebdevelopment.wordpress.com/wp-content/uploads/2014/07/exception-handling-flowchart.jpg)
 *Flowchart illustrating the flow of exception handling in the application.*
 
 ## Running the Application
